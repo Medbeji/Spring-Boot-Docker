@@ -186,9 +186,9 @@ networks:
     my-network:
        driver: bridge
 ```
-and then 
+and then we launche our setting with 3 instances of product-service 
 ```sh
- docker-compose up
+  docker-compose up --scale product-service:3
 ```
 #### Result :
 
