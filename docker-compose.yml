@@ -1,0 +1,27 @@
+version: '2.0'
+services:
+ config-service:
+    image: config-service
+    ports:
+        - "8888:8888"
+    networks:
+        - bridge
+ 
+ discovery-service:
+    image: discovery-service
+    ports: 
+        - "8761:8761"
+    depends_on: 
+        - config-service
+    networks:
+        - bridge
+
+ product-service:
+    image: product-service
+    ports: 
+        - "8080:8080"
+    depends_on: 
+        - config-service
+    networks:
+        - bridge
+
