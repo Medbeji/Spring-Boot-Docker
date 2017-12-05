@@ -123,7 +123,7 @@ docker run -it -p 8080:8080 product-service -e --spring.cloud.config.uri=http://
 ```
 
 ## IMPORTANT
-in order prevent to prevent errors while opening the different containers simultaneously, we've added to each service a retry dependency from spring in pom.xml.
+in order to prevent errors while opening the different containers simultaneously, we've added to each service a retry dependency from spring in pom.xml to assure the connexion with the config-service.
 ```sh
 <dependency>
 			<groupId>org.springframework.retry</groupId>
