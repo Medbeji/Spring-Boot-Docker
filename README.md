@@ -108,7 +108,7 @@ CONFIG_CONTAINER_ID=`docker ps -a | grep config-service | cut -d " " -f1`
 CONFIG_IP_ADDRESS=`docker inspect -f "{{ .NetworkSettings.IPAddress }}" $CONFIG_CONTAINER_ID`
 ```
     
-NB:  We use that IP-ADDRESS tolet other services fetch config files from this ip address.
+NB:  We use that IP-ADDRESS to let other services fetch config files from this ip address.
  - Launch discovery-service 
 ```sh
 docker run -it -p 8761:8761 discovery-service \ -e --spring.cloud.config.uri=http://$CONFIG_IP_ADDRESS:8888
@@ -174,7 +174,14 @@ services:
         - config-service
     networks:
         - my-network
-
+proxy-service:
+    image: proxy-service
+    ports:
+        - "8888:8888"
+    depends_on:
+        - config-service
+    networks:
+        - my-network
 networks:
     my-network:
        driver: bridge
