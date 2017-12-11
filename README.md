@@ -131,7 +131,7 @@ in order to prevent errors while opening the different containers simultaneously
 			<version>${spring-retry.version}</version>
 </dependency>
 ```
-and then add a retry rule in bootstrap.yml of each service that's need to wait for the config-service to be lanched first.
+and then add a retry rule in bootstrap.yml of each service that needs to wait for the config-service to be lanched first.
 
 ```sh
 spring:
